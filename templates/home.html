@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>Home</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header-container">
+        <h1>Library</h1>
+
+        <!--Form to add a new book-->
+        <div class="form">
+          <form class="add-book" action="/add" method="post">
+            <input
+              type="Text"
+              name="title"
+              placeholder="Book title"
+              autocomplete="off"
+            />
+
+            <button class="button">Add Book</button>
+          </form>
+        </div>
+      </div>
+
+      <!--Print Books-->
+      <div class="library-table">
+        {% for book in library %}
+        <div class="book-row">
+          {% if book.found %}
+          <div class="row-text">
+            <p>{{ book.title }} by {{book.author}}</p>
+          </div>
+          <div class="button-wrapper">
+            <a class="button" href="/view/{{ book.id }}">View</a>
+            <a class="button" id="not-found" href="/delete/{{ book.id }}"
+              >Delete</a
+            >
+          </div>
+
+          {% else %}
+          <div class="row-text">
+            <p id="not-found">Book not found</p>
+          </div>
+          <div class="button-wrapper">
+            <a class="button" id="not-found" href="/delete/{{ book.id }}"
+              >Delete</a
+            >
+          </div>
+
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
