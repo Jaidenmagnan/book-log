@@ -97,3 +97,8 @@ def delete(book_id):
 def view(book_id):
     book = db.session.query(Book).filter(Book.id == book_id).first()
     return render_template("view.html", book=book)
+
+
+if __name__ == '__main__':
+    app.run()
+    
