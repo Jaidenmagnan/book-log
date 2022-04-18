@@ -1,1 +1,1 @@
-gunicorn booktracker
+web: gunicorn app:app
