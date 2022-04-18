@@ -1,1 +1,1 @@
-gunicorn booktracker:'create_app()'
+gunicorn booktracker
