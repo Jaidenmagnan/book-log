@@ -4,6 +4,8 @@ from requests import get
 
 app = Flask(__name__)
 
+app.app_context().push()
+
 # Initializes out database config
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
